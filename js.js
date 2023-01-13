@@ -33,13 +33,7 @@ const convertToJson = (json) => {
     if (typeof newjson === "string") return [{ file1: newjson }];
     if (typeof newjson === "number") return [{ file1: newjson }]; //NaN is include. return ""
     if (typeof newjson === "boolean") return [{ file1: newjson}];
-
-    if (Object.prototype.toString.call(json)==='[object Null]'){
-      console.log("hi");
-      return [{ file1:newjson}];
-    } 
-      
-    console.log(newjson);
+    if (Object.prototype.toString.call(newjson)==='[object Null]') return [{ file1:newjson}];
     if (typeof newjson === "object") return [newjson];
   
   } catch (error) {
