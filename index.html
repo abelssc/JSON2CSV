@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+        }
+        h1{
+            text-align: center;
+        }
+        .convertidor{
+            display: flex;
+            width: 80%;
+            margin: 0 auto;
+            flex-basis: 1;
+            gap: 1rem;
+        }
+        .convertidor > *{
+            flex-grow: 1;
+        }
+        [name="json"]{
+            width: 100%;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>JSON TO CSV</h1>
+    <div class="convertidor">
+        <form>
+            <fieldset>
+                <legend>JSON TO CSV</legend>
+                <textarea  placeholder="inserta tu JSON" name="json" rows="10"></textarea>
+                <button type="submit">Enviar</button>
+            </fieldset>
+        </form>
+        <textarea name="csv" id="" cols="30" rows="10"></textarea>
+    </div>
+    <script src="js.js"></script>
+</body>
+</html>
