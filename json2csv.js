@@ -11,8 +11,8 @@ $form.addEventListener("submit", (e) => {
   let json = $json.value;
 
   json=convertToJson(json);
-  let llaves=extraerLLaves(json);
 
+  let llaves=extraerLLaves(json);
   //insertamos las llaves
   content=`"${llaves.join(separador)}"\n`;
   
@@ -49,3 +49,33 @@ const extraerLLaves=(json)=>{
   llaves=llaves.filter((llave, index) => llaves.indexOf(llave) === index);
   return llaves;
 }
+//descarga
+document.querySelector(".descarga").addEventListener("click",(e)=>{
+  let text=$csv.value;
+  let blob=new Blob([text],{type: 'text/csv'});
+
+  let link=document.createElement("a");
+  link.href=URL.createObjectURL(blob);
+  link.download="csv.csv";
+  link.target="_blank";
+  link.click();
+  URL.revokeObjectURL(blob);
+
+
+})
+//subida
+const input=document.querySelector("input[type=file]");
+
+$form.addEventListener("change",e=>{
+  if(e.target.matches("input[type=file]")){
+    let file=input.files[0];
+
+    let reader=new FileReader();
+    reader.readAsText(file);
+    reader.onload=()=>{
+      $json.value=reader.result
+
+    }
+  }
+})
+
